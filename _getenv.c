@@ -15,11 +15,11 @@ char *_getenv(char *input, char **environ)
 	{
 		tok = _strtok(environ[i], "=");
 		if (_strcmp(tok, input) == 0)
-															{
-																right = _strtok(NULL, "=");
-																return (right);
-															}
-															i++;
-														}
+		{
+			right = _strtok(NULL, "=");
+			return (right);
+		}
+		i++;
+	}
 	return (NULL);
 }

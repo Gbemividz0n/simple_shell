@@ -17,9 +17,8 @@ int cdFunc(config *build)
 		ableToChange = cdToPrevious(build);
 	else
 		ableToChange = cdToCustom(build);
-	
-	if (ableToChange
-				)											updateEnviron(build);
+	if (ableToChange)
+		updateEnviron(build);
 	return (1);
 }
 
@@ -47,10 +46,10 @@ _Bool cdToHome(config *build)
 }
 
 /**
- *  cdToPrevious - change directory to previous directory -
- *  address is found in OLDPWD env var
- *  @build: input build
- *  Return: true on success, false on failure
+ * cdToPrevious - change directory to previous directory -
+ * address is found in OLDPWD env var
+ * @build: input build
+ * Return: true on success, false on failure
  */
 _Bool cdToPrevious(config *build)
 {
@@ -63,18 +62,18 @@ _Bool cdToPrevious(config *build)
 	if (i == -1)
 	{
 		chdir(current);
-															write(STDOUT_FILENO, current, _strlen(current));
-															displayNewLine();
-															return (true);
-														}
+		write(STDOUT_FILENO, current, _strlen(current));
+		displayNewLine();
+		return (true);
+	}
 	str = getNodeAtIndex(build->env, i);
 	ptr = _strchr(str, '=');
 	ptr++;
 	chdir(ptr);
 	write(STDOUT_FILENO, ptr, _strlen(ptr));
-														displayNewLine();
-														free(str);
-														return (true);
+	displayNewLine();
+	free(str);
+	return (true);
 }
 
 /**
@@ -91,8 +90,8 @@ _Bool cdToCustom(config *build)
 	{
 		errno = EBADCD;
 		errorHandler(build);
-															return (false);
-														}
+		return (false);
+	}
 	return (true);
 }
 

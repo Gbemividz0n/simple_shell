@@ -13,21 +13,21 @@ _Bool findBuiltIns(config *build)
 		{"env", envFunc},
 		{"history", historyFunc},
 		{"alias", aliasFunc},
-															{"cd", cdFunc},
-															{"setenv", setenvFunc},
-															{"unsetenv", unsetenvFunc},
-															{"help", helpFunc},
-															{NULL, NULL}
+		{"cd", cdFunc},
+		{"setenv", setenvFunc},
+		{"unsetenv", unsetenvFunc},
+		{"help", helpFunc},
+		{NULL, NULL}
 	};
 
 	while (getBuiltIns[i].command)
 	{
 		if (_strcmp(build->args[0], getBuiltIns[i].command) == 0)
 		{
-																getBuiltIns[i].func(build);
-																freeArgsAndBuffer(build);
-																return (true);
-															}
+			getBuiltIns[i].func(build);
+			freeArgsAndBuffer(build);
+			return (true);
+		}
 		i++;
 	}
 	return (false);
@@ -47,22 +47,22 @@ int exitFunc(config *build)
 	{
 		freeMembers(build);
 		if (build->errorStatus)
-																exit(build->errorStatus);
-															exit(EXIT_SUCCESS);
-														}
+			exit(build->errorStatus);
+		exit(EXIT_SUCCESS);
+	}
 	else if (argCount > 1)
 	{
 		exitStatus = _atoi(build->args[1]);
 		if (exitStatus == -1)
-															{
-																errno = EILLEGAL;
-																build->errorStatus = 2;
-																errorHandler(build);
-																													return (0);
-																												}
-															freeMembers(build);
-															exit(exitStatus);
-														}
+		{
+			errno = EILLEGAL;
+			build->errorStatus = 2;
+			errorHandler(build);
+			return (0);
+		}
+		freeMembers(build);
+		exit(exitStatus);
+	}
 	return (1);
 }
 

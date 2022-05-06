@@ -1,10 +1,10 @@
 #include "holberton.h"
 
 /**
- * countArgs - count the number of arguments
- * @args: input array of strings
- * Return: number of strings
- */
+* countArgs - count the number of arguments
+* @args: input array of strings
+* Return: number of strings
+*/
 int countArgs(char **args)
 {
 	register int i = 0;
@@ -15,10 +15,10 @@ int countArgs(char **args)
 }
 
 /**
- * _atoi - change string to an integer
- * @s: input string
- * Return: -1 if it's not a valid number, else the converted number
- */
+* _atoi - change string to an integer
+* @s: input string
+* Return: -1 if it's not a valid number, else the converted number
+*/
 int _atoi(char *s)
 {
 	register int i = 0;
@@ -27,11 +27,11 @@ int _atoi(char *s)
 	while (s[i])
 	{
 		if (s[i] >= '0' && s[i] <= '9')
-																num = num * 10 + s[i] - '0';
+			num = num * 10 + s[i] - '0';
 		else
-																return (-1);
-															i++;
-														}
+			return (-1);
+		i++;
+	}
 	if (num > INT_MAX)
 	{
 		return (-1);
